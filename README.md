@@ -12,24 +12,28 @@ Dosen Pengampu : Agung Nugroho, S.Kom., M.Kom.
 
 # Persiapan
 
-Untuk memulai membuat aplikasi CRUD sederhana, yang perlu disiapkan adalah database server menggunakan MySQL. Pastikan MySQL Server sudah dapat dijalankan melalui XAMPP.
+<p> Untuk memulai membuat aplikasi CRUD sederhana, yang perlu disiapkan adalah database server menggunakan MySQL. Pastikan MySQL Server sudah dapat dijalankan melalui XAMPP.</p>
 
 ## Menjalankan MySQL Server
 
-# Untuk menjalankan MySQL Server dari menu XAMPP Contol.
+- Untuk menjalankan MySQL Server dari menu XAMPP Contol.
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/d853cbca-5cf8-4141-93cf-694c5802ec26)
 
-Pastikan Web server Apache dan MySQL Server sudah dijalankan. Kemudian buka melalui browser: http://localhost/phpmyadmin/
+- Pastikan Web server Apache dan MySQL Server sudah dijalankan. Kemudian buka melalui browser: http://localhost/phpmyadmin/
 
 ## Membuat Database
 
 1. Pilih menu SQL lalu jalankan perintah berikut.
-    CREATE DATABASE latihan1;
+    
+```sql
+CREATE DATABASE latihan1;
+```
 
  2. Kemudian buat Table dengan cara klik menu SQL lagi, kemudian masukan perintah      berikut.
 
-    USE latihan1;
+    ```sql
+USE latihan1;
 CREATE TABLE data_barang(
     id_barang int(11) PRIMARY KEY AUTO_INCREMENT,
     nama varchar(30) NOT NULL,
@@ -39,12 +43,15 @@ CREATE TABLE data_barang(
     harga_jual decimal(10,0) NOT NULL,
     stok int(4) NOT NULL
 );
+```
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/b719eea4-ba94-4890-9c46-4507913d38c5)
 
 3. Setelah itu, Tambahkan data dalam table tersebut dengan memasukan perintah         berikut.
 
+```sql
 INSERT INTO `data_barang` (`id_barang`, `nama`, `kategori`, `gambar`, `harga_beli`, `harga_jual`, `stok`) VALUES (NULL, 'HP Samsung Android', 'Elektronik', 'gambar/HP samsung.jpg', '30000000', '30500000', '1'), (NULL, 'HP Xiaomi', 'Elektronik', 'gambar/HP xiaomi.jpg', '6070000', '6080000', '2');
+```
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/bedfc504-0121-4235-b391-af0419b71e5c)
 
@@ -53,7 +60,8 @@ INSERT INTO `data_barang` (`id_barang`, `nama`, `kategori`, `gambar`, `harga_bel
 1. Buat folder Lab3Web pada root directory Web server (C:\xampp\htdocs)
 2. Kemudian buat file baru dengan nama koneksi.php, Lalu masukan kode berikut.
 
-  <?php
+ ```php
+<?php
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -63,18 +71,17 @@ if ($conn == false) {
     echo "Koneksi ke server gagal.";
     die();
 } #else echo "Koneksi berhasil";
-
-3. Jika gambarnya seperti ini maka berhasil koneksi ke database. Untuk           
-    menyampilkan pesan koneksi berhasil, uncomment pada perintah                       var_dump($koneksi);
+```
 
     ![ss2](https://github.com/Nadiatulumah2/Lab3/assets/129835302/fb854973-9da9-4d7d-ae5f-a462701265a6)
 
  
  ## Menampilkan Data (Read)
 
-# Buat file baru dengan nama index.php, Kemudian masukan kode berikut.
+- Buat file baru dengan nama index.php, Kemudian masukan kode berikut.
 
-  <?php
+ ```php
+<?php
 include "koneksi.php";
 
 $query = "SELECT * FROM data_barang";
@@ -104,7 +111,9 @@ $result = mysqli_query($conn, $query);
                     d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
                 <path
                     d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-            </svg> Aplikasi CRUD Sederhana
+                <path
+                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg> Aplikasi CRUD Sederhana
         </h4>
     </div>
     <div class="container">
@@ -112,9 +121,7 @@ $result = mysqli_query($conn, $query);
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-basket2"
                 viewBox="0 0 16 16">
                 <path
-                    d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z" />
-                <path
-                    d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z" />
+                     d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z" />
             </svg> Data Barang
         </h4>
         <a href="tambah.php" class="btn btn-success btn-sm mb-4 float-end">Tambah Barang</a>
@@ -132,8 +139,8 @@ $result = mysqli_query($conn, $query);
             </tr>
             <?php
             if ($result->num_rows > 0) {
-
-                $no = 1;
+               
+             $no = 1;
                 while ($data = mysqli_fetch_array($result)) {
             ?>
             <tr>
@@ -151,13 +158,23 @@ $result = mysqli_query($conn, $query);
                 </td>
                 <td><?= $data['stok'] ?></td>
                 <td class="text-center">
-                    <a href="ubah.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-warning btn-sm mx-1">Edit</a>
+                <td><?= $data['nama'] ?></td>
+                <td><?= $data['kategori'] ?></td>
+                <td>
+                    Rp.<?= $data['harga_beli'] ?>
+                </td>
+                <td>
+                    Rp.<?= $data['harga_jual'] ?>
+                </td>
+                <td><?= $data['stok'] ?></td>
+                <td class="text-center">
+                 <a href="ubah.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-warning btn-sm mx-1">Edit</a>
                     <a href="proses.php?id_barang=<?= $data['id_barang'] ?>&aksi=hapus"
                         class="btn btn-danger btn-sm mx-1">Delete</a>
                 </td>
             </tr>
             <?php
-                }
+               }
             } else {
                 ?>
             <tr>
@@ -166,11 +183,13 @@ $result = mysqli_query($conn, $query);
             <?php
             }
             ?>
-        </table>
+      </table>
     </div>
 </body>
 
 </html>
+```
+
 
 # Maka hasilnya akan seperti berikut.
 
@@ -180,6 +199,7 @@ $result = mysqli_query($conn, $query);
 
 # Buat file baru dengan nama tambah.php, Kemudian masukan kode berikut.
 
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -287,16 +307,18 @@ $result = mysqli_query($conn, $query);
     </div>
   </body>
 </html>
+```
 
 # Maka hasilnya akan seperti berikut.
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/c9630000-a614-431c-90b2-431147f47c1c)
 
 
-# Kemudian, tambahkan file baru dengan nama proses.php yang mana fungsi ini akan    digunakan untuk memproses semuanya.
+- Kemudian, tambahkan file baru dengan nama proses.php yang mana fungsi ini akan    digunakan untuk memproses semuanya.
 
-# Masukan kode berikut.
+- Masukan kode berikut.
 
+```php
 <?php
 include "koneksi.php";
 
@@ -371,16 +393,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header('location:index.php');
 }
+```
 
-
-# Jika berhasil, maka data baru sukses ditambahkan.
+- Jika berhasil, maka data baru sukses ditambahkan.
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/e6cad8f3-b432-4882-afe4-594cff51796f)
 
 ## Mengubah Data (Update)
 
-# Buat file baru dengan nama ubah.php, Kemudian masukan kode berikut.
+- Buat file baru dengan nama ubah.php, Kemudian masukan kode berikut.
 
+```php
 <!DOCTYPE html>
 <html lang="en">
 
@@ -464,18 +487,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
+```
 
 
-# Maka hasilnya akan seperti berikut.
+- Maka hasilnya akan seperti berikut.
 
 ![image](https://github.com/Nadiatulumah2/Lab3/assets/129835302/96d91192-259e-4740-bd83-0adc2f225e83)
 
 ## Menghapus Data (Delete)
 
- # Pada button delete, Ubah hrefnya ke proses.php dengan membawa 2 parameter         yaitu id_barang dan aksi.
+ - Pada button delete, Ubah hrefnya ke `proses.php` dengan membawa 2 parameter         yaitu id_barang dan aksi.
+- Tambahkan kode berikut ke dalam file `proses.php.` 
 
-  # Tambahkan kode berikut ke dalam file proses.php.
-
+```php
       // -- Hapus barang --
 } else if (isset($_GET['id_barang']) && $_GET['aksi'] == "hapus") {
 
@@ -486,6 +510,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header('location:index.php');
 }
+```
 
 # Maka hasilnya akan seperti berikut.
 
