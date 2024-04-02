@@ -32,7 +32,7 @@ CREATE DATABASE latihan1;
 
  2. Kemudian buat Table dengan cara klik menu SQL lagi, kemudian masukan perintah      berikut.
 
-    ```sql
+```sql
 USE latihan1;
 CREATE TABLE data_barang(
     id_barang int(11) PRIMARY KEY AUTO_INCREMENT,
